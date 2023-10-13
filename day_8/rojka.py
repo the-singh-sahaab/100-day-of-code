@@ -1,16 +1,10 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        res = [1] * len(nums)
-
-        prefix = 1
+    def check(self, nums: List[int]) -> bool:
+        num1 = sorted(nums)
         for i in range(len(nums)):
-            res[i] = prefix
-            prefix *= nums[i]
+            if nums[i:]+nums[:i]==num1:
+                return True
+        return False
 
-        suffix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            res[i] *= suffix
-            suffix *= nums[i]
-
-        return res
+        
         
